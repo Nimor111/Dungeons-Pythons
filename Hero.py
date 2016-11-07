@@ -1,22 +1,18 @@
 from Weapon import Weapon
-
-
-class Spell:
-    pass
+from Spell import Spell
 
 
 class Hero:
 
     def __init__(self, name="Bron", title="Dragonslayer", max_health=100,
-                 max_mana=100, mana_regeneration_rate=2,
-                 curr_health=0, curr_mana=0):
+                 max_mana=100, mana_regeneration_rate=2):
         self.name = name
         self.title = title
-        self.max_health = max_health
-        self.max_mana = max_mana
+        self.max_health = self.curr_health = max_health
+        self.max_mana = self.curr_mana = max_mana
         self.mana_regeneration_rate = mana_regeneration_rate
-        self.curr_health = curr_health
-        self.curr_mana = curr_mana
+        self.weapons = []
+        self.spells = []
 
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
@@ -50,6 +46,7 @@ class Hero:
             return True
 
     def take_mana(self, mana_points):
+        self.curr_mana += self.mana_regeneration_rate
         if self.curr_mana + mana_points > self.curr_mana:
             self.curr_mana = self.max_mana
             return True
@@ -59,17 +56,24 @@ class Hero:
 
     def equip(self, weapon):
         if type(weapon) == Weapon:
-            self.weapon = weapon
-            return True
+            self.weapons.append(weapon)
         else:
             return False
 
     def spell(self, spell):
         if type(spell) == Spell:
-            self.spell = spell
-            return True
+            self.spells.append(spell)
         else:
             return False
 
-    def attack()
-        pass
+    def attack(self, **kwargs):
+        if kwargs.keys[0] == "weapon":
+            for weapon in self.weapons:
+                if kwargs["weapon"] == weapon.name:
+                    return weapon.damage
+        elif kwargs.keys[0] == "magic":
+            for spell in self.spells:
+                if kwargs["magic"] == spell.name:
+                    return spell.damage
+        else:
+            return 0
