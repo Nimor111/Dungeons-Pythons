@@ -5,15 +5,12 @@ from Spell import Spell
 class Hero:
 
     def __init__(self, name="Bron", title="Dragonslayer", max_health=100,
-                 max_mana=100, mana_regeneration_rate=2,
-                 curr_health=0, curr_mana=0):
+                 max_mana=100, mana_regeneration_rate=2):
         self.name = name
         self.title = title
-        self.max_health = max_health
-        self.max_mana = max_mana
+        self.max_health = self.curr_health = max_health
+        self.max_mana = self.curr_mana = max_mana
         self.mana_regeneration_rate = mana_regeneration_rate
-        self.curr_health = curr_health
-        self.curr_mana = curr_mana
         self.weapons = []
         self.spells = []
 
