@@ -32,6 +32,7 @@ class Hero:
     def take_damage(self, damage_points):
         if self.curr_health - damage_points > 0:
             self.curr_health = self.curr_health - damage_points
+            return self.curr_health
         else:
             return 0
 
@@ -40,19 +41,19 @@ class Hero:
             return False
         elif self.curr_health + healing_points > self.curr_health:
             self.curr_health = self.max_health
-            return True
+            return self.curr_health
         else:
             self.curr_health += healing_points
-            return True
+            return self.curr_health
 
     def take_mana(self, mana_points):
         self.curr_mana += self.mana_regeneration_rate
         if self.curr_mana + mana_points > self.curr_mana:
             self.curr_mana = self.max_mana
-            return True
+            return self.curr_mana
         else:
             self.curr_mana += mana_points
-            return True
+            return self.curr_mana
 
     def equip(self, weapon):
         if type(weapon) == Weapon:
