@@ -1,8 +1,5 @@
 from Weapon import Weapon
-
-
-class Spell:
-    pass
+from Spell import Spell
 
 
 class Hero:
@@ -17,6 +14,8 @@ class Hero:
         self.mana_regeneration_rate = mana_regeneration_rate
         self.curr_health = curr_health
         self.curr_mana = curr_mana
+        self.weapons = []
+        self.spells = []
 
     def known_as(self):
         return "{} the {}".format(self.name, self.title)
@@ -59,17 +58,24 @@ class Hero:
 
     def equip(self, weapon):
         if type(weapon) == Weapon:
-            self.weapon = weapon
-            return True
+            self.weapons.append(weapon)
         else:
             return False
 
     def spell(self, spell):
         if type(spell) == Spell:
-            self.spell = spell
-            return True
+            self.spells.append(spell)
         else:
             return False
 
-    def attack()
-        pass
+    def attack(self, **kwargs):
+        if kwargs.keys[0] == "weapon":
+            for weapon in self.weapons:
+                if kwargs["weapon"] == weapon.name:
+                    return weapon.damage
+        elif kwargs.keys[0] == "magic":
+            for spell in self.spells:
+                if kwargs["magic"] == spell.name:
+                    return spell.damage
+        else:
+            return 0
