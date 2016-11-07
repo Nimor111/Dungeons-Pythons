@@ -11,7 +11,7 @@ class Enemy:
         self.spells = []
 
     def is_alive(self):
-        return self.cur_healh > 0
+        return self.cur_health > 0
 
     def can_cast(self):
         return self.cur_mana > 0
