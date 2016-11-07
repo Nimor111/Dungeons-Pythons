@@ -31,6 +31,18 @@ class TestHero(unittest.TestCase):
     def test_can_cast(self):
         self.assertTrue(self.hero.can_cast())
 
+    def test_take_damage(self, damage_points=50):
+        self.assertEqual(self.hero.take_damage(damage_points), 50)
+        self.assertEqual(self.hero.get_health(), 50)
+
+    def test_take_damagetake_healing(self, healing_points=50):
+        self.assertEqual(self.hero.take_healing(healing_points), 100)
+        self.assertEqual(self.hero.get_health(), 100)
+
+    def test_take_mana(self, mana_points=50):
+        self.assertEqual(self.hero.take_mana(mana_points), 100)
+        self.assertEqual(self.hero.get_mana(), 100)
+
 
 if __name__ == "__main__":
     unittest.main()
