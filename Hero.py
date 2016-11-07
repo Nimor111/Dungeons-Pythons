@@ -49,6 +49,7 @@ class Hero:
             return True
 
     def take_mana(self, mana_points):
+        self.curr_mana += self.mana_regeneration_rate
         if self.curr_mana + mana_points > self.curr_mana:
             self.curr_mana = self.max_mana
             return True
