@@ -6,6 +6,7 @@ class testEnemies(unittest.TestCase):
     def setUp(self):
         self.enemy = Enemy()
         self.enemy1 = Enemy(0, 0, 0)
+        self.enemy2 = Enemy(0, 200, 0)
 
     def test_is_alive(self):
         self.assertTrue(self.enemy.is_alive())
@@ -22,6 +23,14 @@ class testEnemies(unittest.TestCase):
     def test_get_mana(self):
         self.assertEqual(self.enemy.get_mana(), 100)
         self.assertEqual(self.enemy1.get_mana(), 0)
+
+    def test_take_healing(self):
+        self.assertTrue(self.enemy.take_healing(10))
+        self.assertFalse(self.enemy1.take_healing(10))
+
+    def test_take_mana(self):
+        self.assertEqual(self.enemy.take_mana(100), 100)
+        self.assertEqual(self.enemy2.take_mana(1), 200)
 
 
 if __name__ == '__main__':
