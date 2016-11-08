@@ -46,8 +46,18 @@ class Hero:
             self.curr_health += healing_points
             return self.curr_health
 
-    def take_mana(self, mana_points):
+    def regen_mana(self):
         self.curr_mana += self.mana_regeneration_rate
+        return self.curr_mana
+
+    def can_cast_spell(self, spell):
+        if self.can_cast() == 1:
+            self.curr_mana -= spell.mana_cost
+            return True
+        else:
+            return False
+
+    def take_mana(self, mana_points):
         if self.curr_mana + mana_points > self.curr_mana:
             self.curr_mana = self.max_mana
             return self.curr_mana
