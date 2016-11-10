@@ -37,21 +37,21 @@ class Enemy:
             self.cur_mana = self.max_mana
             return self.cur_mana
         else:
-            self.cur_mana += cur_mana
+            self.cur_mana += mana_points
             return self.cur_mana
 
     def equip(self, weapon):
-        if type(Weapon) == weapon:
+        if type(weapon) == Weapon:
             self.weapons.append(weapon)
-        elif type(Spell) == weapon:
+        elif type(weapon) == Spell:
             self.spells.append(weapon)
 
     def attack(self, **kwargs):
-        if kwargs.keys[0] == 'weapon':
+        if list(kwargs.keys())[0] == 'weapon':
             for weapon in self.weapons:
                 if kwargs['weapon'] == weapon.name:
                     return weapon.damage
-        elif kwargs.keys[0] == 'magic':
+        elif list(kwargs.keys())[0] == 'magic':
             for spell in self.spells:
                 if kwargs['spell'] == spell.name:
                     return spell.damage
