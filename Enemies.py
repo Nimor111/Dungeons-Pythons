@@ -7,7 +7,7 @@ class Enemy:
         self.max_health = self.cur_health = health
         self.max_mana = self.cur_mana = mana
         self.damage = damage
-        self.weapons = []
+        self.weapons = [Weapon(name="Claws", damage=self.damage)]
         self.spells = []
 
     def is_alive(self):
@@ -21,6 +21,13 @@ class Enemy:
 
     def get_mana(self):
         return self.cur_mana
+
+    def can_cast_spell(self, spell):
+        if self.get_mana() >= spell.mana_cost:
+            self.cur_mana -= spell.mana_cost
+            return True
+        else:
+            return False
 
     def take_healing(self, healing_points):
         if self.is_alive():

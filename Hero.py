@@ -51,7 +51,7 @@ class Hero:
         return self.cur_mana
 
     def can_cast_spell(self, spell):
-        if self.can_cast() == 1:
+        if self.get_mana() >= spell.mana_cost:
             self.cur_mana -= spell.mana_cost
             return True
         else:

@@ -4,3 +4,6 @@ class Spell:
         self.damage = damage
         self.mana_cost = mana_cost
         self.cast_range = cast_range
+
+    def __lt__(self, other):
+        return self.damage < other.damage
