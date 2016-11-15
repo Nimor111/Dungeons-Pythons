@@ -82,16 +82,7 @@ an Enemy(health={}, mana={}, damage={}) " \
 
 
 def main():
-    enemy = Enemy()
-    hero = Hero()
-    fight = Fights(hero, enemy)
-    fight.fight()
-    fight.enemy = Enemy()
-    # fight.enemy.equip(Weapon(name="Claws", damage=5))
-    # fight.fight()
-    fight.enemy = Enemy()
-    fight.enemy.equip(Weapon(name="Claws", damage=5))
-    fight.fight()
+    pass
 
 
 if __name__ == "__main__":
